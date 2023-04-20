@@ -41,9 +41,9 @@
                 <!-- Masthead Avatar Image-->
                 <!-- <img class="masthead-avatar mb-5" src="assets/img/logo.png" alt="..." /> -->
                 <h2>
-                <label for="pet-select">Choose Cover Crop:</label>
+                <label for="crop-select">Choose Cover Crop:</label>
                 <br>
-                <select name="pets" id="crop-select">
+                <select name="crops" id="crop-select">
                     <option value="">--Select Option--</option>
                     <option value="hvetch">Hairy Vetch</option>
                     <option value="rclover">Red Clover</option>
@@ -92,23 +92,25 @@
                      $('#btnRefresh').on('click', function() {
                        var $p = $('#container');
                        var bedSF = document.getElementsByName("bedArea")[0].value;
+                       var coverCrop = document.getElementsByName("crops")[0].value;
+                       console.log(coverCrop);
                        console.log(bedSF);
                        var  feet2Acres = 43560;
                             bedAc = bedSF / feet2Acres;
-                       $p.html("<h3>" + bedSF + " square feet = " + precise(bedAc) + " acres.");
+                       $p.html("<h2>Crop Selected:  " + coverCrop + "</h2><h3>" + bedSF + " square feet = " + precise(bedAc) + " acres.");
                      });
 
-                         var bedSF = document.getElementsByName("bedArea")[0].value;
-                         console.log(bedSF);
-                         var  feet2Acres = 43560;
-                              bedAc = bedSF / feet2Acres;
-
-                         document.write(bedSF + " square feet = " + precise(bedAc) + " acres.");
-
-                         function formChanged() {
-                              var bedSF = document.getElementsByName("bedArea")[0].value;
-                              console.log(bedSF);
-                         }
+                         // var bedSF = document.getElementsByName("bedArea")[0].value;
+                         // console.log(bedSF);
+                         // var  feet2Acres = 43560;
+                         //      bedAc = bedSF / feet2Acres;
+                         //
+                         // document.write(bedSF + " square feet = " + precise(bedAc) + " acres.");
+                         //
+                         // function formChanged() {
+                         //      var bedSF = document.getElementsByName("bedArea")[0].value;
+                         //      console.log(bedSF);
+                         // }
 
                      </script>
                 </p>
