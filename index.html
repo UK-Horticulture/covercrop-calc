@@ -41,10 +41,10 @@
                 <!-- Masthead Avatar Image-->
                 <!-- <img class="masthead-avatar mb-5" src="assets/img/logo.png" alt="..." /> -->
                 <h2>
-                <label for="pet-select">Choose a cover crop:</label>
+                <label for="pet-select">Choose Cover Crop:</label>
                 <br>
                 <select name="pets" id="crop-select">
-                    <option value="">--Please choose an option--</option>
+                    <option value="">--Select Option--</option>
                     <option value="hvetch">Hairy Vetch</option>
                     <option value="rclover">Red Clover</option>
                     <option value="bclover">Berseem Clover</option>
@@ -65,7 +65,7 @@
                </select><br><br><br>
 
                 <label for="quantity">Area of Bed (Square Feet)</label><br>
-                <input type="number" id="bedArea" name="bedArea" min="10" max="45000" onkeyup="formChanged()" onchange="formChanged()"><button type="button" id="btnRefresh">Calculate</button>
+                <input type="number" id="bedArea" name="bedArea" min="5" max="45000" size="10"><button type="button" id="btnRefresh">Calculate</button>
 
                </h2>
 
