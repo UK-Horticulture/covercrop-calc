@@ -44,24 +44,22 @@
                 <label for="crop-select">Choose Cover Crop:</label>
                 <br>
                 <select name="crops" id="crop-select">
-                    <option value="">--Select Option--</option>
-                    <option value="hvetch">Hairy Vetch</option>
-                    <option value="rclover">Red Clover</option>
-                    <option value="bclover">Berseem Clover</option>
-                    <option value="sclover">Sweet Clover</option>
-                    <option value="subclover">Subterranean Clover</option>
-                    <option value="crimclover">Crimson Clover</option>
-                    <option value="cowpea">Cowpeas</option>
-                    <option value="fieldpea">Fieldpeas</option>
-                    <option value="aryegrass">Annual Ryegrass</option>
-                    <option value="rye">Cereal Rye</option>
-                    <option value="sudex">Sorghum-sudangrass Hybrid</option>
-                    <option value="bwheat">Buckwheat</option>
-                    <option value="oat">Oats</option>
-                    <option value="barley">Barley</option>
-                    <option value="mustard">Mustards</option>
-                    <option value="radish">Radish</option>
-                    <option value="rape">Rapeseed</option>
+                    <option value="None Selected">--Select Option--</option>
+                    <option value="Mustard">Brassica: Mustard</option>
+                    <option value="Radish">Brassica: Radish</option>
+                    <option value="Turnip">Brassica: Turnip</option>
+                    <option value="Rapeseed">Brassica: Rapeseed</option>
+                    <option value="Cereal Rye">Grass/Grain:  Cereal Rye</option>
+                    <option value="Barley">Grass/Grain:  Barley</option>
+                    <option value="Annual Ryegrass">Grass/Grain:  Annual Ryegrass</option>
+                    <option value="Winter Wheat">Grass/Grain:  Winter Wheat</option>
+                    <option value="Sorghum-Sudangrass">Grass/Grain:  Sorghum-Sudangrass</option>
+                    <option value="Crimson Clover">Legume:  Crimson Clover</option>
+                    <option value="Berseem Clover">Legume:  Berseem Clover</option>
+                    <option value="Austrian Winter Pea">Legume:  Austrian Winter Pea</option>
+                    <option value="Hairy Vetch">Legume:  Hairy Vetch</option>
+                    <option value="Cowpeas">Legume:  Cowpeas</option>
+                    <option value="Red Clover">Legume:  Red Clover</option>
                </select><br><br><br>
 
                 <label for="quantity">Area of Bed (Square Feet)</label><br>
@@ -86,7 +84,7 @@
                      var bedSF = 0;
 
                      function precise(x) {
-                          return x.toPrecision(3);
+                          return x.toPrecision(4);
                      }
 
                      $('#btnRefresh').on('click', function() {
@@ -97,20 +95,92 @@
                        console.log(bedSF);
                        var  feet2Acres = 43560;
                             bedAc = bedSF / feet2Acres;
-                       $p.html("<h2>Crop Selected:  " + coverCrop + "</h2><h3>" + bedSF + " square feet = " + precise(bedAc) + " acres.");
-                     });
 
-                         // var bedSF = document.getElementsByName("bedArea")[0].value;
-                         // console.log(bedSF);
-                         // var  feet2Acres = 43560;
-                         //      bedAc = bedSF / feet2Acres;
-                         //
-                         // document.write(bedSF + " square feet = " + precise(bedAc) + " acres.");
-                         //
-                         // function formChanged() {
-                         //      var bedSF = document.getElementsByName("bedArea")[0].value;
-                         //      console.log(bedSF);
-                         // }
+                       if (coverCrop == "Mustard") {
+                            var lowRate = 10;
+                                highRate = 15;
+                       }
+
+                       if (coverCrop == "Radish") {
+                            var lowRate = 12;
+                                highRate = 20;
+                       }
+
+                       if (coverCrop == "Turnip") {
+                            var lowRate = 10;
+                                highRate = 12;
+                       }
+
+                       if (coverCrop == "Rapeseed") {
+                            var lowRate = 8;
+                                highRate = 14;
+                       }
+
+                       if (coverCrop == "Cereal Rye") {
+                            var lowRate = 90;
+                                highRate = 160;
+                       }
+
+                       if (coverCrop == "Barley") {
+                            var lowRate = 80;
+                                highRate = 125;
+                       }
+
+                       if (coverCrop == "Annual Ryegrass") {
+                            var lowRate = 20;
+                                highRate = 30;
+                       }
+
+                       if (coverCrop == "Winter Wheat") {
+                            var lowRate = 60;
+                                highRate = 160;
+                       }
+
+                       if (coverCrop == "Sorghum-Sudangrass") {
+                            var lowRate = 40;
+                                highRate = 50;
+                       }
+
+                       if (coverCrop == "Crimson Clover") {
+                            var lowRate = 22;
+                                highRate = 30;
+                       }
+
+                       if (coverCrop == "Berseem Clover") {
+                            var lowRate = 15;
+                                highRate = 20;
+                       }
+
+                       if (coverCrop == "Austrian Winter Pea") {
+                            var lowRate = 60;
+                                highRate = 80;
+                       }
+
+                       if (coverCrop == "Hairy Vetch") {
+                            var lowRate = 25;
+                                highRate = 30;
+                       }
+
+                       if (coverCrop == "Cowpeas") {
+                            var lowRate = 70;
+                                highRate = 100;
+                       }
+
+                       if (coverCrop == "Red Clover") {
+                            var lowRate = 10;
+                                highRate = 12;
+                       }
+
+                       if (coverCrop == "None Selected") {
+                            var lowRate = 0;
+                                highRate = 0;
+                       }
+
+                       var seedWeightLow = lowRate * bedAc;
+                           seedWeightHigh = highRate * bedAc;
+
+                       $p.html("<h2>For <u>" + coverCrop + "</u> you need...</h2><h3>Low Seeding Rate: <u>" + precise(seedWeightLow) + "</u> pounds <br>High Seeding Rate: <u>" + precise(seedWeightHigh) + "</u> pounds");
+                     });
 
                      </script>
                 </p>
@@ -131,39 +201,39 @@
                 <!-- Portfolio Grid Items-->
                 <div class="row justify-content-center">
                     <!-- Portfolio Item 1-->
-                    <div class="col-md-6 col-lg-4 mb-5"><a href="http://www.uky.edu/ccd/" target="_blank">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="http://www.uky.edu/ccd">
+                    <div class="col-md-6 col-lg-4 mb-5"><a href="https://www.sare.org/resources/managing-cover-crops-profitably-3rd-edition/" target="_blank">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="https://www.sare.org/resources/managing-cover-crops-profitably-3rd-edition/">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio/placeholder.png" alt="..." /></a>
+                            <img class="img-fluid" src="assets/img/portfolio/SARE-CC.png" alt="..." /></a>
                         </div>
                     </div>
                     <!-- Portfolio Item 2-->
-                    <div class="col-md-6 col-lg-4 mb-5"><a href="https://kyhortcouncil.org/" target="_blank">
+                    <div class="col-md-6 col-lg-4 mb-5"><a href="https://www.sare.org/resources/cover-crops/" target="_blank">
                         <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio/placeholder.png" alt="..." /></a>
+                            <img class="img-fluid" src="assets/img/portfolio/SARE-CCR.png" alt="..." /></a>
                         </div>
                     </div>
                     <!-- Portfolio Item 3-->
-                    <div class="col-md-6 col-lg-4 mb-5"><a href="https://www.oak-ky.org/" target="_blank">
+                    <div class="col-md-6 col-lg-4 mb-5"><a href="http://www2.ca.uky.edu/agcomm/pubs/id/id113/id113.pdf" target="_blank">
                         <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio/placeholder.png" alt="..." /></a>
+                            <img class="img-fluid" src="assets/img/portfolio/UK-CC.png" alt="..." /></a>
                         </div>
                     </div>
                     <!-- Portfolio Item 4-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0"><a href="https://southern.sare.org/" target="_blank">
+                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0"><a href="http://www2.ca.uky.edu/agcomm/pubs/AGR/AGR240/AGR240.pdf" target="_blank">
                         <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio/placeholder.png" alt="..." /></a>
+                            <img class="img-fluid" src="assets/img/portfolio/UK-CC2.png" alt="..." /></a>
                         </div>
                     </div>
                     <!-- Portfolio Item 5-->
