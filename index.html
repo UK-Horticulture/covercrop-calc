@@ -17,7 +17,7 @@
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     </head>
-    
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N31B0W7YHJ"></script>
     <script>
@@ -59,18 +59,19 @@
                     <option value="None Selected">--Select Option--</option>
                     <option value="Mustard">Brassica: Mustard</option>
                     <option value="Radish">Brassica: Radish</option>
-                    <option value="Turnip">Brassica: Turnip</option>
                     <option value="Rapeseed">Brassica: Rapeseed</option>
-                    <option value="Cereal Rye">Grass/Grain:  Cereal Rye</option>
-                    <option value="Barley">Grass/Grain:  Barley</option>
+                    <option value="Turnip">Brassica: Turnip</option>
                     <option value="Annual Ryegrass">Grass/Grain:  Annual Ryegrass</option>
-                    <option value="Winter Wheat">Grass/Grain:  Winter Wheat</option>
+                    <option value="Barley">Grass/Grain:  Barley</option>
+                    <option value="Buckwheat">Grass/Grain:  Buckwheat</option>
+                    <option value="Cereal Rye">Grass/Grain:  Cereal Rye</option>
                     <option value="Sorghum-Sudangrass">Grass/Grain:  Sorghum-Sudangrass</option>
-                    <option value="Crimson Clover">Legume:  Crimson Clover</option>
-                    <option value="Berseem Clover">Legume:  Berseem Clover</option>
+                    <option value="Winter Wheat">Grass/Grain:  Winter Wheat</option>
                     <option value="Austrian Winter Pea">Legume:  Austrian Winter Pea</option>
-                    <option value="Hairy Vetch">Legume:  Hairy Vetch</option>
+                    <option value="Berseem Clover">Legume:  Berseem Clover</option>
                     <option value="Cowpeas">Legume:  Cowpeas</option>
+                    <option value="Crimson Clover">Legume:  Crimson Clover</option>
+                    <option value="Hairy Vetch">Legume:  Hairy Vetch</option>
                     <option value="Red Clover">Legume:  Red Clover</option>
                </select><br><br><br>
 
@@ -136,6 +137,11 @@
                        if (coverCrop == "Barley") {
                             var lowRate = 80;
                                 highRate = 125;
+                       }
+
+                       if (coverCrop == "Buckwheat") {
+                            var lowRate = 60;
+                                highRate = 96;
                        }
 
                        if (coverCrop == "Annual Ryegrass") {
